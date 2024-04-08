@@ -252,7 +252,7 @@ def __getattr__(name: str) -> Any:
 
 
 # TODO: check exports
-__all__ = [  # noqa: F822
+__all__ = [
     "StrawberryArgument",
     "StrawberryArgumentAnnotation",
     "UNSET",  # for backwards compatibility  # type: ignore
