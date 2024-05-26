@@ -858,7 +858,6 @@ def test_single_union():
     assert result.data["something"] == {"__typename": "A", "a": 5}
 
 
-@pytest.mark.xfail(reason="Not supported yet")
 def test_generic_union_with_annotated():
     @strawberry.type
     class SomeType:
@@ -887,7 +886,6 @@ def test_generic_union_with_annotated():
 
     schema = strawberry.Schema(Query)
 
-    # TODO: check the name
     assert (
         str(schema)
         == textwrap.dedent(
@@ -898,7 +896,7 @@ def test_generic_union_with_annotated():
             }
 
             type Query {
-              someTypeQueries(id: ID!): SomeTypeByIdResult!
+              someTypeQueries(id: ID!): SomeTypeObjectQueries!
             }
 
             type SomeType {
@@ -906,7 +904,7 @@ def test_generic_union_with_annotated():
               name: String!
             }
 
-            union SomeTypeNotFoundError = SomeType | NotFoundError
+            union SomeTypeByIdResult = SomeType | NotFoundError
 
             type SomeTypeObjectQueries {
               byId(id: ID!): SomeTypeByIdResult!

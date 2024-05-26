@@ -851,6 +851,7 @@ class GraphQLCoreConverter:
             return graphql_union
 
         graphql_types: List[GraphQLObjectType] = []
+
         for type_ in union.types:
             graphql_type = self.from_type(type_)
 
